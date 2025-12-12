@@ -1,0 +1,23 @@
+---
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+---
+
+<LayoutBasic />
+
+<script defer src="/src/pages/front/FO_002/FO_002.js"></script>
+<script defer src="/src/utils/tmap/btnEvents.js"></script>
+<script defer src="/src/utils/tmap/tooltipEvents.js"></script>
+
+<script defer>
+	// onboard 이벤트
+	function onSwipeView() {
+		const swipeStore = Alpine.store('swipe');
+		if (swipeStore) {
+			swipeStore.visible = 'onboard';
+		}
+	}
+
+	window.addEventListener('load', () => {
+		onSwipeView();
+	});
+</script>

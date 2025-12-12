@@ -1,2 +1,3 @@
 # astro-ox
-astro oxlint eslint prttier 
+
+astro oxlint eslint prttier

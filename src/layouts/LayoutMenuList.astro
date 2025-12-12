@@ -1,0 +1,24 @@
+---
+import '@/styles/global.css';
+
+const { title = '' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} |</title>
+	</head>
+	<body>
+		<div>
+			<main class="space-y-5 overflow-x-hidden overflow-y-auto p-5 peer-aria-[label=lnb]:w-[calc(100dvw-5rem)]">
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>

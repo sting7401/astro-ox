@@ -1,0 +1,23 @@
+---
+import ScriptInline from '@/layouts/ScriptInline.astro';
+
+const { title = '게이트트' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} |</title>
+		<link rel="stylesheet" href="/src/styles/front-output.css" />
+	</head>
+	<body x-data>
+		<slot />
+
+		<ScriptInline />
+	</body>
+</html>

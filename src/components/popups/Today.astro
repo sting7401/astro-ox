@@ -1,0 +1,110 @@
+<template x-if="$store?.layout?.todayPopup === true">
+	<template x-teleport="body">
+		<dialog
+			id="todayPopup"
+			aria-labelledby="dialogTitle"
+			aria-describedby="dialogDesc"
+			class="fixed top-0 right-0 left-0 z-100 flex h-dvh w-dvw flex-col items-center justify-center border bg-black/40 p-4 shadow-lg"
+			open
+			x-transition
+		>
+			<div>
+				<a
+					href="https://form.naver.com/response/RG6SUSaCqkyFAj2_cjL_WA"
+					target="_blank"
+					rel="noopener noreferrer"
+					title="new link EVENT"
+					class="flex flex-col"
+				>
+					<template x-if="$store.layout.getLang() === 'ko'">
+						<div class="sr-only">
+							<h4>AR 인증사징 EVENT</h4>
+							<p>이벤트 기간 : 10.05 ~ 11.30</p>
+
+							<ol>
+								<li>광집사 AR 인증사진 촬영 후 SNS 업로드</li>
+								<li>#광집사 #한국관광공사 태그 필수! *인스타 스토리 가능</li>
+								<li>업로드한 SNS를 캡쳐하여 인증 접수하기 *이미지를 터치하면 접수 링크로 이동합니다</li>
+							</ol>
+
+							<ul>
+								<li>*익일 5천원 상당의 기프티콘 발송</li>
+								<li>*선착순 마감으로 조기 종료될 수 있습니다.</li>
+							</ul>
+						</div>
+					</template>
+
+					<template x-if="$store.layout.getLang() === 'en'">
+						<div class="sr-only">
+							<h4>AR Photo Certification EVENT</h4>
+							<p>Period: 10.05 ~ 11.30</p>
+							<ol>
+								<li>Take an AR certification photowith Travel Butler and upload it to SNS.</li>
+								<li>Must include tags #광집사 #한국관광공사 *Instagram Stories are allowed</li>
+								<li>
+									Capture the uploaded SNS post and submit for verification. *Tap the image to go to
+									the submission link
+								</li>
+							</ol>
+
+							<ul>
+								<li>*A gifticon worth 5,000 KRW will be sent daily.</li>
+								<li>*The event may end early once all spots are filled.</li>
+							</ul>
+						</div>
+					</template>
+
+					<picture class="flex max-w-[24.375rem]">
+						<img
+							:src="`/images/popup/img-popup-${$store.layout.getLang() === 'ko' ? 'ko' : 'en'}.png`"
+							alt=""
+						/>
+					</picture>
+				</a>
+			</div>
+
+			<div
+				x-data="{
+                        get today() {
+                            return $store.layout.m['map.btn.today']?.()
+                        },
+                        get btnClose() {
+                            return $store.layout.m['map.btn.close']?.()
+                        }
+                    }"
+				class="flex w-full max-w-[24.375rem] items-center justify-between gap-1 text-white"
+			>
+				<label
+					for="todayPopupHideDay"
+					class="flex cursor-pointer items-center gap-1.5 text-[.8125rem]"
+					:aira-label="today"
+					x-data="{todayHideCheck: false}"
+				>
+					<input
+						type="checkbox"
+						name="todayPopupHideDay"
+						id="todayPopupHideDay"
+						class="peer sr-only"
+						x-model="todayHideCheck"
+						@change="$store.layout?.todayPopupHideDay($el)"
+					/>
+					<icon-list
+						:data-name="todayHideCheck ? 'checkbox-on' : 'checkbox-off'"
+						class="grid size-5 place-content-center"></icon-list>
+					<span x-text="today"></span>
+				</label>
+
+				<button
+					type="button"
+					@click.stop="$store.layout?.todayPopupClose()"
+					class="flex items-center gap-2 py-3 text-[.8125rem]"
+					:aira-label="btnClose"
+				>
+					<icon-list data-name="modal-close" class="size-4 fill-white stroke-none transition duration-200"
+					></icon-list>
+					<span x-text="btnClose"></span>
+				</button>
+			</div>
+		</dialog>
+	</template>
+</template>
