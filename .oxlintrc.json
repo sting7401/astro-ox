@@ -208,6 +208,10 @@
         "Alpine": "readonly",
         "Dropdown": "readonly",
         "HSStaticMethods": "readonly"
+      },
+      "env": {
+        "browser": true,
+        "es2024": true
       }
     },
     {
